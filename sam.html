@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King Samuel - Thank You</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes confettiFall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+        @keyframes balloonFloat {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(-10px); }
+            75% { transform: translateY(-30px) translateX(5px); }
+        }
+        @keyframes doorOpenLeft {
+            0% { transform: perspective(1000px) rotateY(0); }
+            100% { transform: perspective(1000px) rotateY(-100deg); }
+        }
+        @keyframes doorOpenRight {
+            0% { transform: perspective(1000px) rotateY(0); }
+            100% { transform: perspective(1000px) rotateY(100deg); }
+        }
+        .float { animation: float 3s ease-in-out infinite; }
+        .fade-in { animation: fadeIn 1s ease-out forwards; }
+        .handwriting { font-family: 'Dancing Script', cursive; }
+        .gradient-text {
+            background: linear-gradient(45deg, #6b46c1, #d53f8c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .transaction-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+        .balloon {
+            position: absolute;
+            border-radius: 50%;
+            animation: balloonFloat 8s ease-in-out infinite;
+            z-index: 1;
+        }
+        .balloon-string {
+            position: absolute;
+            background-color: #999;
+            width: 2px;
+            height: 60px;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .door {
+            position: fixed;
+            top: 0;
+            width: 50vw;
+            height: 100vh;
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            transform-origin: left center;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .door-left {
+            left: 0;
+            transform-origin: right center;
+        }
+        .door-right {
+            right: 0;
+            transform-origin: left center;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen flex items-center justify-center p-4">
+    <div id="confettiContainer" class="fixed inset-0 pointer-events-none overflow-hidden z-0"></div>
+    <div id="balloonContainer" class="fixed inset-0 pointer-events-none overflow-hidden z-0"></div>
+    
+    <!-- Door animation elements -->
+    <div id="doorLeft" class="door door-left hidden">KING</div>
+    <div id="doorRight" class="door door-right hidden">SAMUEL</div>
+    
+    <div class="max-w-2xl w-full text-center relative z-10">
+        <div id="initialScreen" class="bg-white rounded-2xl shadow-xl p-8 transition-all duration-500 relative overflow-hidden">
+            <div class="float inline-block mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+            </div>
+            
+            <h1 class="text-4xl font-bold gradient-text mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 800;">For King Samuel</h1>
+            <p class="text-gray-600 mb-6">A special tribute to honor your kindness</p>
+            
+            <button id="continueBtn" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg">
+                View Tribute
+            </button>
+        </div>
+        
+        <div id="celebrationScreen" class="hidden bg-white rounded-2xl shadow-xl p-6 overflow-hidden relative">
+            <div class="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+            </div>
+            
+            <div class="relative z-10 mt-8">
+                <h1 class="text-4xl font-bold gradient-text mb-6" style="font-family: 'Poppins', sans-serif; font-weight: 800;">Thank You, King Samuel</h1>
+                
+                <div class="bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 border-amber-400 p-4 mb-6 text-left rounded-lg fade-in">
+                    <p class="text-amber-800 italic" style="font-family: 'Poppins', sans-serif; font-weight: 600;">"Your generosity has been a beacon of hope and support in my life. I'm forever grateful for your kindness."</p>
+                </div>
+                
+                <p class="text-gray-700 mb-6 fade-in">
+                    Your generosity and kindness have made a lasting impact on my life. You've shown me what true friendship means.
+                </p>
+                
+                <!-- Transaction Proof Section -->
+                <div class="mb-6 fade-in">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Transaction Proofs</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white p-3 rounded-lg border border-gray-200">
+                            <img src="https://raw.githubusercontent.com/Johnodeleye/hubpost-images/786748754e9508f8c5c39ca9fbd96b2ad4e0ae53/uploads/1753948058739-1000690003.jpg" alt="Transaction proof 1" class="transaction-img">
+                            <p class="text-sm text-gray-500 mt-2">Transaction 1 - $5,000</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-gray-200">
+                            <img src="https://raw.githubusercontent.com/Johnodeleye/hubpost-images/244cb2786f420c12d705cbcb94dfe023956b2f72/uploads/1753948058429-1000690001.jpg" alt="Transaction proof 2" class="transaction-img">
+                            <p class="text-sm text-gray-500 mt-2">Transaction 2 - $5,000</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-blue-50 p-4 rounded-lg fade-in">
+                        <div class="text-2xl font-bold text-blue-600 mb-1">$10,000</div>
+                        <div class="text-sm text-gray-600">Total Support</div>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg fade-in">
+                        <div class="text-2xl font-bold text-green-600 mb-1">Unlimited</div>
+                        <div class="text-sm text-gray-600">Kindness Given</div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 fade-in">
+                    <button id="replayBtn" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-lg">
+                        View Again
+                    </button>
+                </div>
+                
+                <div class="mt-8 pt-4 border-t border-gray-100 fade-in">
+                    <p class="text-gray-400 text-sm handwriting">With gratitude🌹❤️ from P-DEV 🎉</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const continueBtn = document.getElementById('continueBtn');
+            const initialScreen = document.getElementById('initialScreen');
+            const celebrationScreen = document.getElementById('celebrationScreen');
+            const confettiContainer = document.getElementById('confettiContainer');
+            const balloonContainer = document.getElementById('balloonContainer');
+            const replayBtn = document.getElementById('replayBtn');
+            const doorLeft = document.getElementById('doorLeft');
+            const doorRight = document.getElementById('doorRight');
+            
+            // Colors for confetti and balloons
+            const colors = ['bg-red-400', 'bg-blue-400', 'bg-green-400', 'bg-yellow-400', 'bg-purple-400', 'bg-pink-400'];
+            const balloonColors = ['#FF5252', '#FF4081', '#E040FB', '#7C4DFF', '#536DFE', '#448AFF', '#40C4FF', '#18FFFF', '#64FFDA', '#69F0AE', '#B2FF59', '#EEFF41', '#FFFF00', '#FFD740', '#FFAB40', '#FF6E40'];
+            
+            // Create balloons
+            function createBalloons() {
+                // Clear existing balloons
+                balloonContainer.innerHTML = '';
+                
+                // Create 20 balloons
+                for (let i = 0; i < 20; i++) {
+                    const balloon = document.createElement('div');
+                    const size = Math.floor(Math.random() * 60) + 40;
+                    const left = Math.random() * 100;
+                    const delay = Math.random() * 5;
+                    const duration = Math.random() * 10 + 10;
+                    const color = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+                    
+                    balloon.className = 'balloon';
+                    balloon.style.width = `${size}px`;
+                    balloon.style.height = `${size}px`;
+                    balloon.style.left = `${left}vw`;
+                    balloon.style.top = `${Math.random() * 100}vh`;
+                    balloon.style.backgroundColor = color;
+                    balloon.style.animationDelay = `${delay}s`;
+                    balloon.style.animationDuration = `${duration}s`;
+                    
+                    // Add string to balloon
+                    const string = document.createElement('div');
+                    string.className = 'balloon-string';
+                    balloon.appendChild(string);
+                    
+                    balloonContainer.appendChild(balloon);
+                }
+            }
+            
+            // Create confetti
+            function createConfetti() {
+                const confetti = document.createElement('div');
+                const size = Math.floor(Math.random() * 10) + 5;
+                const left = Math.random() * 100;
+                const duration = Math.random() * 3 + 2;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                confetti.className = `absolute rounded-sm ${color}`;
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.left = `${left}vw`;
+                confetti.style.top = '-10px';
+                confetti.style.animation = `confettiFall ${duration}s linear forwards`;
+                
+                confettiContainer.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, duration * 1000);
+            }
+            
+            // Create confetti blast
+            function createConfettiBlast() {
+                for (let i = 0; i < 100; i++) {
+                    setTimeout(createConfetti, i * 30);
+                }
+            }
+            
+            // Door opening animation
+            function openDoors() {
+                doorLeft.classList.remove('hidden');
+                doorRight.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    doorLeft.style.animation = 'doorOpenLeft 1.5s ease-out forwards';
+                    doorRight.style.animation = 'doorOpenRight 1.5s ease-out forwards';
+                }, 50);
+                
+                setTimeout(() => {
+                    doorLeft.style.display = 'none';
+                    doorRight.style.display = 'none';
+                    initialScreen.classList.add('opacity-0', 'scale-95');
+                }, 1600);
+                
+                setTimeout(() => {
+                    initialScreen.classList.add('hidden');
+                    celebrationScreen.classList.remove('hidden');
+                    createConfettiBlast();
+                    createBalloons();
+                    
+                    // Continuous confetti
+                    setInterval(createConfetti, 300);
+                }, 1800);
+            }
+            
+            // Continue button click
+            continueBtn.addEventListener('click', openDoors);
+            
+            // Replay button click
+            replayBtn.addEventListener('click', function() {
+                createConfettiBlast();
+                createBalloons();
+            });
+            
+            // Create initial balloons
+            createBalloons();
+        });
+    </script>
+</body>
+</html>
